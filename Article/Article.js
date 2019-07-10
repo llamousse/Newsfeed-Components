@@ -89,61 +89,69 @@ const data = [
   }
 ];
 
-// Because classes are not hoisted you will need to start your code at the bottom of the page.  Look for the comment "START HERE"
-
-// class Article {
-//   constructor(domElement) {
-//     // assign this.domElement to the passed in domElement
-//     this.domElement = domElement;
-//     console.log(domElement);
-
-//     // create a reference to the ".expandButton" class. 
-//     this.expandButton = domElement.querySelector('.expandButton');
-
-//     // Using your expandButton reference, update the text on your expandButton to say "expand"
-//     this.expandButton.textContent = 'expand';
-
-//     // Set a click handler on the expandButton reference, calling the expandArticle method.
-//     this.expandButton.addEventListener('click', () => this.expandArticle());
-//     console.log('expand', this);
-//   }
-
-//   expandArticle() {
-//     // Using our reference to the domElement, toggle a class to expand or hide the article.
-//     this.domElement.classList.toggle('article-open');
-//   }
-
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
   <div class="article">
     <h2>{title of the article}</h2>
     <p class="date">{date of the article}</p>
-
     {three separate paragraph elements}
-
     <span class='expandButton'></span>
   </div>
 
-// - With your selection in place, now chain .forEach() on to the articles variable to iterate over 
-// the articles NodeList and create a new instance of Article by passing in each article as a parameter 
-// to the Article class.
-
   Hint: You will need to use createElement more than once here!
-
+  
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each peice of the data object above.
-
+  
   Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
-
+  
   Step 3: return the entire component.
-
-  Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
-
+  
+  Step 4: Map over the data, creating a component for each object and add each component to the DOM as children of the 'articles' div.
+  
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
-
 */
 
-// let articles = document.querySelectorAll('.article');
-// // console.log(articles);
+const articles = document.querySelector('.articles');
 
-// articles.forEach(article => new Article(article));
-// // console.log('articles', articles);
+data.forEach(datas => {
+  // console.log('creating arts:', datas.title);
+  articles.appendChild(createArticle(datas.title, datas.date, datas.firstParagraph, datas.secondParagraph, datas.thirdParagraph));
+});
+
+function createArticle(title, date, firstParagraph, secondParagraph, thirdParagraph) {
+  // define new elements
+  const article = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const articleOne = document.createElement('p');
+  const articleTwo = document.createElement('p');
+  const articleThree = document.createElement('p');
+  const expandButton = document.createElement('span');
+
+  // setup structure of elements
+  article.appendChild(articleTitle);
+  article.appendChild(articleDate);
+  article.appendChild(articleOne);
+  article.appendChild(articleTwo);
+  article.appendChild(articleThree);
+  article.appendChild(expandButton);
+
+  // set class names
+  article.classList.add('article');
+  articleDate.classList.add('date');
+  expandButton.classList.add('expandButton');
+
+  // set text content
+  articleTitle.textContent = title;
+  articleDate.textContent = date;
+  articleOne.textContent = firstParagraph;
+  articleTwo.textContent = secondParagraph;
+  articleThree.textContent = thirdParagraph;
+
+  // button events
+  expandButton.addEventListener('click', event => {
+    article.classList.toggle('article-open');
+  })
+
+  return article;
+}
