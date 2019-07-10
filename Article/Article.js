@@ -86,7 +86,8 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
-
+  }
+];
 
 // Because classes are not hoisted you will need to start your code at the bottom of the page.  Look for the comment "START HERE"
 
@@ -111,7 +112,6 @@ const data = [
 //     // Using our reference to the domElement, toggle a class to expand or hide the article.
 //     this.domElement.classList.toggle('article-open');
 //   }
-];
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   

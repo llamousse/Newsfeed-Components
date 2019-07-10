@@ -1,12 +1,12 @@
 /* This is the data we will be using, study it but don't change anything, yet. */
 
 let menuItems = [
-  'Students',
-  'Faculty',
+  "Students",
+  "Faculty",
   "What's New",
-  'Tech Trends',
-  'Music',
-  'Log Out'
+  "Tech Trends",
+  "Music",
+  "Log Out"
 ];
 
 /* 
@@ -34,21 +34,47 @@ let menuItems = [
   
 */
 
-// const toggleMenu = () => {
-//   // Toggle the "menu--open" class on your menu refence. 
-//   menu.classList.toggle('menu--open');
-//   // console.log('menu clicked!', menu);
-// }
+const header = document.querySelector('.header');
+header.appendChild(createMenu(menuItems));
 
-// // Start Here: Create a reference to the ".menu" class
-// const menu = document.querySelector('.menu');
-// // console.log(menu);
+function createMenu() {
+  // define new elements
+  const menuButton = document.createElement('div');
+  const unList = document.createElement('ul');
+  const students = document.createElement('li');
+  const faculty = document.createElement('li');
+  const whatsNew = document.createElement('li');
+  const tech = document.createElement('li');
+  const music = document.createElement('li');
+  const logOut = document.createElement('li');
 
-// // create a reference to the ".menu-button" class
-// const menuButton = document.querySelector('.menu-button');
-// // console.log(menuButton);
+  // setup structure of elements
+  menuButton.appendChild(unList);
+  unList.appendChild(students);
+  unList.appendChild(faculty);
+  unList.appendChild(whatsNew);
+  unList.appendChild(tech);
+  unList.appendChild(music);
+  unList.appendChild(logOut);
 
-// // Using your menuButton reference, add a click handler that calls toggleMenu
-// menuButton.addEventListener('click', toggleMenu);
-// // console.log(menuButton);
+  // set class names
+  menuButton.classList.add('menu');
 
+  // set text content
+  students.textContent = "Students";
+  faculty.textContent = "Faculty";
+  whatsNew.textContent = "What's New";
+  tech.textContent = "Tech Trends";
+  music.textContent = "Music";
+  logOut.textContent = "Log Out";
+
+
+  // button events
+  header.addEventListener('click', event => {
+    // console.log('menu button clicked', event.target);
+    // change visibility of the menu button w/ menu-button
+    menuButton.classList.toggle('menu--open');
+  });
+
+  return menuButton;
+}
