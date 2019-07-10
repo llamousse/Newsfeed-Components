@@ -86,6 +86,13 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Hello Worldddsss',
+    date: 'July 10th, 2019',
+    firstParagraph: `Omgomgogmgogmogmogmg.`,
+    secondParagraph: `Lolololollolol.`,
+    thirdParagraph: `Hahahahha.`
   }
 ];
 
@@ -147,9 +154,10 @@ function createArticle(title, date, firstParagraph, secondParagraph, thirdParagr
   articleOne.textContent = firstParagraph;
   articleTwo.textContent = secondParagraph;
   articleThree.textContent = thirdParagraph;
+  expandButton.textContent = 'Expand';
 
   // button events
-  expandButton.addEventListener('click', event => {
+  expandButton.addEventListener('click', () => {
     article.classList.toggle('article-open');
   })
 
